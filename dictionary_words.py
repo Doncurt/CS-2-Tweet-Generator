@@ -1,3 +1,7 @@
+'''
+A program that takes a command line number in put and spits out a number of random dictionary word(s)
+all printingis done in the function so it acts as a black box
+'''
 #imports the random class to use
 import random
 #function declaration for dictionaryWords
