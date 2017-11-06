@@ -1,55 +1,37 @@
 
-histogram ="one fish two fish red fish blue fish".split(' ')
-print(histogram.count("one"))
 
-def preprocess(filename):
-    with open(filename,'r')as f:
-        words= f.readlines
-    return words
+'''
+Histogram function that sorts the file first them starts the process of putting them into another file
+'''
+def histogram(hist):
+
+    histofile = open("histogram.txt", "w+")
+    for value, key in sorted(hist.items(), key=lambda s: s[1], reverse=True):
+        histofile.write("%s, %s \n" % (value, key))
+    histofile.close()
 
 
+'''
+takes the fine and accesses and sorts off of the  unique words that can be found in the file
+'''
+def unique_words(hist):
+
+    unique_words = 0
+    for word in input_histo:
+        if hist[word] == 1:
+            unique_words += 1
+    return hist
 
 
-class Histogram(list):
+# Prints whatever the word's frequency is
+def frequency(hist, word):
 
-    def __init__(self, iterable=None):
-        """Initialize this histogram as a new list; update with given items"""
-        super(Histogram, self).__init__()
-        self.types = 0  # the number of distinct item types in this histogram
-        self.tokens = 0  # the total count of all item tokens in this histogram
-        if iterable:
-            self.update(iterable)
+    print_string = "The word '{}' shows up {} times."
+    if word in input_histo:
+        print(print_string.format(word, input_histo[word]))
+    else:
+        print("The word",  "'"+word+"'", "does not show up!")
+    return hist.count(word)
 
-    def update(self, iterable):
-        """Update this histogram with the items in the given iterable"""
-        for item in iterable:
-            self.tokens += 1
-            if not self.__contains__(item):
-                self.append((item, 1))
-                self.types += 1
-            else:
-                for word, value in self:
-                    if item == word:
-                        self[self._index(item)] = (word, value+1)
-
-    def count(self, item):
-        """Return the count of the given item in this histogram, or 0"""
-        if not self.__contains__(item):
-            return 0
-        else:
-            for word, value in self:
-                if word == item:
-                    return value
-
-    def __contains__(self, item):
-        """Return True if the given item is in this histogram, or False."""
-        return any(item in word for word in self)
-
-    def _index(self, target):
-        """Return the index of the (target, count) entry if found, or None."""
-        if self.__contains__(target) is False:
-            return None
-        else:
-            for index, word in enumerate(self):
-                if target in word:
-                    return index
+if __name__ == '__main__':
+    import sys
