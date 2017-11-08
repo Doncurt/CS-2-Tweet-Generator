@@ -1,3 +1,4 @@
+import re
 '''
 A histogram() function which takes a source_text argument (can be either a filename or the contents of the file as a string, your choice) and return a histogram data structure that stores each unique word along with the number of times the word appears in the source text.
 '''
@@ -5,6 +6,8 @@ A histogram() function which takes a source_text argument (can be either a filen
 weighted frequecny takeking the lfnght of a list of words then taking the word appears and divding it by the length'''
 
 source_text= "one fish two fish red fish blue fish".split(" ")
+
+
 '''
 There were quicker ways to do this but I specifically wanted the tokens and types as their own just incase that came up again in later programming
 '''
