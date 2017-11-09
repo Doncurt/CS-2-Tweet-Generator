@@ -4,8 +4,19 @@ A histogram() function which takes a source_text argument (can be either a filen
 '''
 '''
 weighted frequecny takeking the lfnght of a list of words then taking the word appears and divding it by the length'''
-
-source_text= "one fish two fish red fish blue fish".split(" ")
+source_text= "one,:; fish,:; two,:; fish,:; red,:; fish,:; blue,:; fish,:;"
+def stringify(source_text):
+    source_text=source_text.split(" ")
+    source_text= ' '.join(source_text)
+    source_text= source_text.split(",")
+    source_text= ''.join(source_text)
+    source_text= source_text.split(":")
+    source_text= ''.join(source_text)
+    source_text= source_text.split(";")
+    source_text= ''.join(source_text)
+    source_text= source_text.split(" ")
+    return source_text
+source_text= stringify(source_text)
 
 
 '''
