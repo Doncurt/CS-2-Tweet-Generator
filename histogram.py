@@ -24,6 +24,7 @@ def stringify(source_text):
     source_text= ''.join(source_text)
     source_text= source_text.split(" ")
     return source_text
+
 source_text= stringify(source_text)
 
 
@@ -31,28 +32,15 @@ source_text= stringify(source_text)
 There were quicker ways to do this but I specifically wanted the tokens and types as their own just incase that came up again in later programming
 '''
 def histogram(source_text):
-    tokens = []
-    types = []
-    histogram=[]
-    #get the tokens from the word list
-    for i in range(len(source_text)):
-        tokens.append(sum(x == source_text[i] for x in source_text))
-
-    #get the types from the word list
+    histogram = {}
     for word in source_text:
-        types.append(word)
+        if word not in histogram:
+            histogram[word] = 0
+        histogram[word] += 1
 
-    #make the histogram as a list
-    histogram = [[types[i], tokens[i]] for i in range(len(types))]
 
-    # make into a tuple
-    hist_tuple = set(tuple(element) for element in histogram)
-
-    #make into a dictionary
-    hist_dict = dict((types[i], tokens[i]) for i in range(len(histogram)))
-
-    print("As a dictionary: ",hist_dict)
-    return (hist_dict)
+    print("As a dictionary: ",histogram)
+    return (histogram)
 #efficency testing
 start = time.clock()
 histo = histogram(source_text)

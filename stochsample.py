@@ -24,7 +24,3 @@ def weight_sampling(histogram):
                 frequency -= 1
             else:
                 return k
-
-if __name__== "__main__":
-    import sys
-    
