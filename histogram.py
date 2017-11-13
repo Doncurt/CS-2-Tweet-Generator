@@ -67,8 +67,8 @@ def frequency(word,histogram):
         if word in key:
             return(value)
 
-test=frequency("it",histo)
-#print(test)
+test=frequency("blue",histo)
+
 '''
 takes the text from the source text and concerts it to a list of mini list that contain the word and its count
 '''
@@ -106,4 +106,4 @@ def tuplegram(source_text):
             tuplegram.append(word)
     return tuplegram
 
-print(tuplegram(source_text))
+#print(tuplegram(source_text))
