@@ -4,10 +4,11 @@ import time
 A histogram() function which takes a source_text argument (can be either a filename or the contents of the file as a string, your choice) and return a histogram data structure that stores each unique word along with the number of times the word appears in the source text.
 '''
 '''
-weighted frequecny takeking the lfnght of a list of words then taking the word appears and divding it by the length'''
-data= open("histogram.txt", "r")
-source_text=data.read().replace('\n', '')
+weighted frequecny taking the lfnght of a list of words then taking the word appears and divding it by the length'''
 
+#data= open("histogram.txt", "r")
+#source_text=data.read().replace('\n', '')
+source_text="one fish two fish red fish blue fish"
 #print(source_text)
 
 
@@ -39,13 +40,13 @@ def histogram(source_text):
         histogram[word] += 1
 
 
-    print("As a dictionary: ",histogram)
+    #print("As a dictionary: ",histogram)
     return (histogram)
 #efficency testing
 start = time.clock()
 histo = histogram(source_text)
 end = time.clock()
-print ("It took %.2gs  to run this" % (end-start))
+#print ("It took %.2gs  to run this" % (end-start))
 '''
 A unique_words() function that takes a histogram argument and returns the total count of unique words in the histogram. For example, when given the histogram for The Adventures of Sherlock Holmes, it returns the integer 8475.
 '''
@@ -56,7 +57,7 @@ def unique_words(histogram):
             count +=1
     print("The number of unique words is: ",count)
 
-unique_words(histo)
+#unique_words(histo)
 '''
 A frequency() function that takes a word and histogram argument and returns the number of times that word appears in a text. For example, when given the word "mystery" and the Holmes histogram, it will return the integer 20.
 '''
@@ -67,4 +68,15 @@ def frequency(word,histogram):
             return(value)
 
 test=frequency("it",histo)
-print(test)
+#print(test)
+
+def listogram(source_text):
+    listogram = []
+    for word in source_text:
+        if word in listogram:
+            listogram.index(word)[1] += 1
+        else:
+            listogram.append([word,0])
+    print(listogram)
+
+listogram(source_text)
