@@ -69,14 +69,41 @@ def frequency(word,histogram):
 
 test=frequency("it",histo)
 #print(test)
-
+'''
+takes the text from the source text and concerts it to a list of mini list that contain the word and its count
+'''
 def listogram(source_text):
-    listogram = []
+    #empty list creation
+    new_list = []
+    #loops over each word in the source text
     for word in source_text:
-        if word in listogram:
-            listogram.index(word)[1] += 1
-        else:
-            listogram.append([word,0])
-    print(listogram)
+        #if the word isnt in the new list....
+        if word not in new_list:
+            # in its own mini list, the word and its count are added
+            new_list.append([word,source_text.count(word)])
+
+    #used to get a new list without dupilcates
+    listogram=[]
+    for word in new_list:
+        if word not in listogram:
+            listogram.append(word)
+
+
+    return listogram
 
 listogram(source_text)
+'''
+Takes the source text and with it, creates a list of tuples with the count as well as word,
+'''
+def tuplegram(source_text):
+    new_tuple=[]
+    for word in source_text:
+        if word not in new_tuple:
+            new_tuple.append((word,source_text.count(word)))
+    tuplegram=[]
+    for word in new_tuple:
+        if word not in tuplegram:
+            tuplegram.append(word)
+    return tuplegram
+
+print(tuplegram(source_text))
