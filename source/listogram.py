@@ -21,16 +21,16 @@ class Listogram(list):
         """Increase frequency count of given word by given count amount."""
         # TODO: Increase word frequency by count
         self.tokens += count
-        in_list = False
+        exists_in_list = False
 
         for word_count_tuple in self:
-            if word_count_tuple[0] == word and not in_list:
-                tuple_num = word_count_tuple[1] + count
+            if word_count_tuple[0] == word and not exists_in_list:
+                tuple_count = word_count_tuple[1] + count
                 self.remove(word_count_tuple)
-                self.append((word, tuple_num))
-                in_list = True
+                self.append((word, tuple_count))
+                exists_in_list = True
 
-        if not in_list:
+        if not exists_in_list:
             self.append((word, count))
             self.types += 1
 
