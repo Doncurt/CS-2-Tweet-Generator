@@ -1,5 +1,5 @@
 from dictogram import Dictogram
-import sample
+import stochsample
 from random import randint
 
 
@@ -27,10 +27,10 @@ def dictogram_markov(text_string):
 
 
 def markov_sample(dictogram):
-    return sample.weighted_dict_sampling(dictogram)
+    return stochsample.weight_sampling(dictogram)
 
 
-def markov_chain(dictogram_):
+def markov_chain(dictogram):
 
     output = ['red']
     for word_pos in range(15):
@@ -46,5 +46,5 @@ def markov_chain(dictogram_):
 
 if __name__ == "__main__":
     test = 'one fish two fish red fish blue fish'
-    fish_markov = markov_dictograms(fish_text)
-    print(markov_chain(fish_markov_dictionary))
+    markov_test = dictogram_markov(test)
+    print(markov_chain(markov_test))
