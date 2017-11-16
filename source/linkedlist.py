@@ -55,14 +55,34 @@ class LinkedList(object):
     def length(self):
         """Return the length of this linked list by traversing its nodes.
         TODO: Running time: O(???) Why and under what conditions?"""
-        # TODO: Loop through all nodes and count one for each
+        #points to current node as the head
+        current_node = self.head
+        #current number of nodes seen so far
+        total = 0
+
+        #interation. exits once at the last node
+        while current_node.next != None:
+            #increments total
+            total+=1
+            #goes to the next node and starts the process again
+            current_node = current_node.next
+        return total
 
     def append(self, item):
         """Insert the given item at the tail of this linked list.
         TODO: Running time: O(???) Why and under what conditions?"""
         # TODO: Create new node to hold given item
         # TODO: Append node after tail, if it exists
-
+        #first create a new node
+        new_node = node(data)
+        #stores the node that were currently working on, starts at the left most point
+        current_node = self.head
+        #starts atthe left most point, then interates over all of the node, and once the next node of the current node is none, we know that that is the last and then can insert
+        while current_node.next!= None:
+            current_node = current_node.next
+        #once we know we're at the last element of the list, we set the next node to the new node
+        current_node.next = new_node
+        #length to figure out how many nodes are in the list itslef
     def prepend(self, item):
         """Insert the given item at the head of this linked list.
         TODO: Running time: O(???) Why and under what conditions?"""
@@ -75,6 +95,23 @@ class LinkedList(object):
         TODO: Worst case running time: O(???) Why and under what conditions?"""
         # TODO: Loop through all nodes to find item where quality(item) is True
         # TODO: Check if node's data satisfies given quality function
+        #make sure you cant go past the last node
+        if index >= self.length():
+            print("GET index out of range")
+            return None
+        #contains the current index that were looking at
+        current_index = 0
+        #the current node that were looking at, starts off at head
+        current_node = self.head
+        while True:
+            #increments the current node( at the beginning it will be the head node)
+            current_node= current_node.next
+            #if the current index is equal to the one passed in
+            if current_index == index:
+                #return the data of that node
+                 return current_node.data
+             #otherwise, increment the current index and keep going
+            current_index +=1
 
     def delete(self, item):
         """Delete the given item from this linked list, or raise ValueError.
@@ -84,6 +121,23 @@ class LinkedList(object):
         # TODO: Update previous node to skip around node with matching data
         # TODO: Otherwise raise error to tell user that delete has failed
         # Hint: raise ValueError('Item not found: {}'.format(item))
+        if index >= self.length():
+            print("GET index out of range")
+            return None
+        #looks at the current index
+        current_index = 0
+        current_node = self.head
+        while True:
+            #when a node is being erased, after the node is erased, you have to make sure the node previous to it points to the node after the one you erased
+            last_node = current_node
+            current_node = current_node.next
+            if current_index == index:
+                #when node is being erased, just the pointers are changed
+                last_node.next = current_node.next
+                #breaks out and returns, changing the list an setting it
+                return
+            #if its not found you increase the indexing
+            current_index+=1
 
 
 def test_linked_list():
