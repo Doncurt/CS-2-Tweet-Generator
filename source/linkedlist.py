@@ -55,7 +55,23 @@ class LinkedList(object):
     def length(self):
         """Return the length of this linked list by traversing its nodes.
         TODO: Running time: O(???) Why and under what conditions?"""
-        # TODO: Loop through all nodes and count one for each
+
+        if self.head is None:
+            total = 0
+            return total
+        else:
+            current_node = self.head
+
+            #current number of nodes seen so far
+            total = 1
+
+            #interation. exits once at the last node
+            while current_node.next != None:
+                #increments total
+                total+=1
+                #goes to the next node and starts the process again
+                current_node = current_node.next
+            return total
 
 
     def append(self, item):
@@ -75,6 +91,10 @@ class LinkedList(object):
         TODO: Running time: O(???) Why and under what conditions?"""
         # TODO: Create new node to hold given item
         # TODO: Prepend node before head, if it exists
+        new_node = Node(item)
+        if self.head == None:
+            self.head = new_node
+
 
     def find(self, quality):
         """Return an item from this linked list satisfying the given quality.
@@ -82,6 +102,14 @@ class LinkedList(object):
         TODO: Worst case running time: O(???) Why and under what conditions?"""
         # TODO: Loop through all nodes to find item where quality(item) is True
         # TODO: Check if node's data satisfies given quality function
+        current = self.head
+
+        while current != None:
+            if current.data == quality:
+                return current.data
+            else:
+                current = current.next
+
 
     def delete(self, item):
         """Delete the given item from this linked list, or raise ValueError.
@@ -107,6 +135,7 @@ def test_linked_list():
     print('head: {}'.format(ll.head))
     print('tail: {}'.format(ll.tail))
     print('length: {}'.format(ll.length()))
+
 '''
     # Enable this after implementing delete method
     delete_implemented = False
