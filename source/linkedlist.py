@@ -98,8 +98,9 @@ class LinkedList(object):
             self.tail = new_node
 
         else:
-            self.head.next= self.head
-            new_node= self.head
+            new_node.next= self.head
+            
+            self.head=new_node
 
 
 
