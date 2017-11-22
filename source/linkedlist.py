@@ -92,17 +92,8 @@ class LinkedList(object):
         TODO: Running time: O(???) Why and under what conditions?"""
         # TODO: Create new node to hold given item
         # TODO: Prepend node before head, if it exists
-        new_node = Node(item)
-        if self.head is None:
-            self.head = new_node
-            self.tail = new_node
-
-        else:
-            new_node.next= self.head
-            
-            self.head=new_node
-
-
+        self.head = Node(data = item)
+        self.next=self.head
 
 
     def find(self, quality):
@@ -138,20 +129,11 @@ class LinkedList(object):
         elif current_node:
             previous_node.next = current_node.next
             current_node.next = None
+        print(self.length())
 
-        if self.head is None:
-            self.tail = None
-
-
+        print(self.tail)
 
 def test_linked_list():
-    ll = LinkedList()
-    ll.prepend('c')
-    ll.prepend('B')
-    print('list: {}'.format(ll))
-    print(ll.length())
-
-    '''
     ll = LinkedList()
     print('list: {}'.format(ll))
     print(ll.head)
@@ -165,10 +147,10 @@ def test_linked_list():
     print('head: {}'.format(ll.head))
     print('tail: {}'.format(ll.tail))
     print('length: {}'.format(ll.length()))
-'''
 
 
-'''
+
+
 
     # Enable this after implementing delete method
     delete_implemented = True
@@ -182,8 +164,6 @@ def test_linked_list():
         print('head: {}'.format(ll.head))
         print('tail: {}'.format(ll.tail))
         print('length: {}'.format(ll.length()))
-        '''
-
 
 
 
