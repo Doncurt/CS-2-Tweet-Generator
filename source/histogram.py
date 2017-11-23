@@ -40,7 +40,7 @@ def histogram(source_text):
         histogram[word] += 1
 
 
-    print("As a dictionary: ",histogram)
+    #print("As a dictionary: ",histogram)
     return (histogram)
 #efficency testing
 start = time.clock()
@@ -90,8 +90,11 @@ def listogram(source_text):
 
 
     return listogram
+start = time.clock()
+listo=listogram(source_text)
+end = time.clock()
 
-listogram(source_text)
+print(listo)
 '''
 Takes the source text and with it, creates a list of tuples with the count as well as word,
 '''
