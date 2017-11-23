@@ -27,7 +27,7 @@ def stringify(source_text):
     return source_text
 
 source_text= stringify(source_text)
-
+print(source_text)
 
 '''
 There were quicker ways to do this but I specifically wanted the tokens and types as their own just incase that came up again in later programming
@@ -40,7 +40,7 @@ def histogram(source_text):
         histogram[word] += 1
 
 
-    #print("As a dictionary: ",histogram)
+    print("As a dictionary: ",histogram)
     return (histogram)
 #efficency testing
 start = time.clock()
@@ -57,7 +57,7 @@ def unique_words(histogram):
             count +=1
     print("The number of unique words is: ",count)
 
-#unique_words(histo)
+unique_words(histo)
 '''
 A frequency() function that takes a word and histogram argument and returns the number of times that word appears in a text. For example, when given the word "mystery" and the Holmes histogram, it will return the integer 20.
 '''
