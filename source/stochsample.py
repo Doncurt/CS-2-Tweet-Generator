@@ -53,7 +53,7 @@ def test_weight_sampling():
         if sample =="fish":
             fish_count+=1
 
-    #print(one_count, ' ', two_count, ' ', red_count, ' ', blue_count , ' ', fish_count )
+    print(one_count, ' ', two_count, ' ', red_count, ' ', blue_count , ' ', fish_count )
 if __name__ == "__main__":
     import sys
 

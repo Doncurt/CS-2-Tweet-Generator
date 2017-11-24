@@ -40,7 +40,7 @@ def histogram(source_text):
         histogram[word] += 1
 
 
-    #print("As a dictionary: ",histogram)
+    print("As a dictionary: ",histogram)
     return (histogram)
 #efficency testing
 start = time.clock()
@@ -68,7 +68,7 @@ def frequency(word,histogram):
             return(value)
 
 test=frequency("blue",histo)
-
+print ("the frequency of the word blue is",test)
 '''
 takes the text from the source text and concerts it to a list of mini list that contain the word and its count
 '''
@@ -94,12 +94,13 @@ start = time.clock()
 listo=listogram(source_text)
 end = time.clock()
 
-print(listo)
+#print(listo)
 '''
 Takes the source text and with it, creates a list of tuples with the count as well as word,
 '''
 def tuplegram(source_text):
     new_tuple=[]
+
     for word in source_text:
         if word not in new_tuple:
             new_tuple.append((word,source_text.count(word)))
