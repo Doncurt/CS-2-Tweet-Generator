@@ -95,6 +95,9 @@ class LinkedList(object):
         self.head = Node(data = item)
         self.next=self.head
 
+        if self.tail==None:
+            self.tail= Node(data= item)
+
 
     def find(self, quality):
         """Return an item from this linked list satisfying the given quality.
