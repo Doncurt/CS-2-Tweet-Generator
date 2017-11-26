@@ -71,4 +71,7 @@ def main():
 
 
 if __name__ == '__main__':
-    main()
+    #main()
+    text = ['one', 'fish', 'two', 'fish', 'red', 'fish', 'blue', 'fish']
+    fish = Dictogram(text)
+    print(fish)

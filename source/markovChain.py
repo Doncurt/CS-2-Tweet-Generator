@@ -47,4 +47,5 @@ def markov_chain(dictogram):
 if __name__ == "__main__":
     test = 'one fish two fish red fish blue fish'
     markov_test = dictogram_markov(test)
+    #print(markov_test)
     print(markov_chain(markov_test))
