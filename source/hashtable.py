@@ -39,6 +39,11 @@ class HashTable(object):
         TODO: Running time: O(???) Why and under what conditions?"""
         # TODO: Loop through all buckets
         # TODO: Collect all values in each bucket
+        all_values=[]
+        for bucket in self.buckets:
+            for k,v in butcket.items():
+                all_values.append(v)
+        return all_values
 
     def items(self):
         """Return a list of all items (key-value pairs) in this hash table.
