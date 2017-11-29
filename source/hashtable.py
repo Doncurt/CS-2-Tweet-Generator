@@ -71,7 +71,12 @@ class HashTable(object):
         TODO: Running time: O(???) Why and under what conditions?"""
         # TODO: Find bucket where given key belongs
         # TODO: Check if key-value entry exists in bucket
-        for bucketin self.buckets
+        for bucket in self.buckets:
+            for k,v in bucket.items():
+                if key == k
+                    return True
+                else:
+                    return False
     def get(self, key):
         """Return the value associated with the given key, or raise KeyError.
         TODO: Running time: O(???) Why and under what conditions?"""
