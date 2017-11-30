@@ -128,14 +128,12 @@ class HashTable(object):
         key_bucket = self._bucket_index(key)
         exists_in_table = False
 
-        print(self.buckets[key_bucket].items())
-
         for location in self.buckets[key_bucket].items():
             if location[0] is key:
                 exists_in_table = True
                 self.buckets[key_bucket].delete((key, location[1]))
 
-        if not exists_in_table:
+        if exists_in_table == False:
             raise KeyError('Key not found: {}'.format(key))
 
 def test_hash_table():
