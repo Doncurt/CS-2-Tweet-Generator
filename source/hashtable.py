@@ -1,6 +1,8 @@
 #!python
 
 from linkedlist import LinkedList
+# for debugging hash table tests that fail inconsistently
+import random
 
 
 class HashTable(object):
@@ -91,13 +93,11 @@ class HashTable(object):
         # TODO: Otherwise, raise error to tell user get failed
         # Hint: raise KeyError('Key not found: {}'.format(key))
         key_bucket = self._bucket_index(key)
-
-        for location in self.buckets[key_bucket].items():
-            if location[0] is key:
-                return location[1]
-
-        raise KeyError('Key not found: {}'.format(key))
-
+        finder = self.buckets[key_bucket].find(lambda data: data[0] == key)
+        if finder is not None:
+            return finder[1]
+        else:
+            raise KeyError('Key not found: {}'.format(key))
     def set(self, key, value):
         """Insert or update the given key with its associated value.
         TODO: Running time: O(???) Why and under what conditions?"""
@@ -105,17 +105,12 @@ class HashTable(object):
         # TODO: Check if key-value entry exists in bucket
         # TODO: If found, update value associated with given key
         # TODO: Otherwise, insert given key-value entry into bucket
-        key_bucket = self._bucket_index(key)
-        exists_in_table = False
+        bucket_index = self._bucket_index(key)
 
-        for location in self.buckets[key_bucket].items():
-            if location[0] is key:
-                exists_in_table = True
-                self.buckets[key_bucket].delete((key, location[1]))
-                self.buckets[key_bucket].append((key, value))
-
-        if not exists_in_table:
-            self.buckets[key_bucket].append((key, value))
+        # Check if it's in. If inside already, delete before adding (update).
+        if self.contains(key):
+            self.delete(key)
+        self.buckets[bucket_index].prepend((key, value))
 
     def delete(self, key):
         """Delete the given key from this hash table, or raise KeyError.
@@ -125,16 +120,15 @@ class HashTable(object):
         # TODO: If found, delete entry associated with given key
         # TODO: Otherwise, raise error to tell user delete failed
         # Hint: raise KeyError('Key not found: {}'.format(key))
-        key_bucket = self._bucket_index(key)
-        exists_in_table = False
+        bucket_index = self._bucket_index(key)
+        bucket = self.buckets[bucket_index]
+        found = bucket.find(lambda item: item[0] == key)
 
-        for location in self.buckets[key_bucket].items():
-            if location[0] is key:
-                exists_in_table = True
-                self.buckets[key_bucket].delete((key, location[1]))
+        if found:
+            bucket.delete(found)
+        else:
+            raise KeyError("Could not find key [{}]".format(key))
 
-        if exists_in_table == False:
-            raise KeyError('Key not found: {}'.format(key))
 
 def test_hash_table():
     ht = HashTable()
