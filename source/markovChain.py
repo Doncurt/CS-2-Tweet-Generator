@@ -63,7 +63,7 @@ def nth_order_markov(dictogram):
 
     nth_order_stop = len(output)
 
-    for position in range(15):
+    for position in range(10):
         #finds the key tuple based on the length
         key_tuple = tuple((output[index]) for index in range(position, position + nth_order_stop))
         # if the tuple is in the dictogram it adds it to the output
