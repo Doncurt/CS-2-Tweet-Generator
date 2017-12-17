@@ -27,7 +27,7 @@ def stringify(source_text):
     return source_text
 
 source_text= stringify(source_text)
-print(source_text)
+
 
 '''
 There were quicker ways to do this but I specifically wanted the tokens and types as their own just incase that came up again in later programming
@@ -40,7 +40,7 @@ def histogram(source_text):
         histogram[word] += 1
 
 
-    print("As a dictionary: ",histogram)
+    #print("As a dictionary: ",histogram)
     return (histogram)
 #efficency testing
 start = time.clock()
@@ -55,7 +55,7 @@ def unique_words(histogram):
     for key, value in histogram.items():
         if value == 1:
             count +=1
-    print("The number of unique words is: ",count)
+    #print("The number of unique words is: ",count)
 
 unique_words(histo)
 '''
@@ -68,7 +68,7 @@ def frequency(word,histogram):
             return(value)
 
 test=frequency("blue",histo)
-print ("the frequency of the word blue is",test)
+#print ("the frequency of the word blue is",test)
 '''
 takes the text from the source text and concerts it to a list of mini list that contain the word and its count
 '''

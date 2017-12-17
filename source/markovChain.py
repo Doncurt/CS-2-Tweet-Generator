@@ -79,8 +79,9 @@ def nth_order_markov(dictogram):
 
 if __name__ == "__main__":
     test = 'one fish two fish red fish blue fish'
-    markov_test = dictogram_markov(test)
-    #print(markov_test)
-    print(markov_chain(markov_test))
 
-    
+
+
+    fish_test = nth_order_markov_dictograms(test, 4)
+    print(fish_test)
+    print(nth_order_markov(fish_test))
