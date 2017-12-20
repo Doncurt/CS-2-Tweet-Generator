@@ -1,6 +1,6 @@
 from string import punctuation
 
-class Clean():
+class Cleaner():
     '''Will clean the text of all whitespace, punctuation, as well as tabs, indents and the like'''
 
 
