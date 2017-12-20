@@ -1,11 +1,7 @@
-"""
-Flask Documentation:     http://flask.pocoo.org/docs/
-Jinja2 Documentation:    http://jinja.pocoo.org/2/documentation/
-Werkzeug Documentation:  http://werkzeug.pocoo.org/documentation/
 
-This file creates your application.
-"""
-
+from stochsample import weight_sampling
+from histogram import histo
+from markovChain import nth_order_markov_dictograms,nth_order_markov
 import os
 from flask import Flask, render_template, request, redirect, url_for
 
