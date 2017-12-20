@@ -1,6 +1,6 @@
 import os
 from flask import Flask, render_template, request, redirect, url_for
-from markovChain import nth_order_markov_dictograms,nth_order_markov
+from .markovChain import nth_order_markov_dictograms,nth_order_markov
 from stripText import Cleaner
 app = Flask(__name__)
 
