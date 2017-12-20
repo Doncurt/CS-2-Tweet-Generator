@@ -1,6 +1,6 @@
 import os
 from flask import Flask, render_template, request, redirect, url_for
-
+from markovChain import nth_order_markov_dictograms,nth_order_markov
 app = Flask(__name__)
 
 app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY', 'this_should_be_configured')
