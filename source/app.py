@@ -15,4 +15,4 @@ def index():
     return nth_order_markov(fish_test)
 
 if __name__=="__main__":
-    server.run(debug=True,use_reloader=True)
+    app.run(debug=True,use_reloader=True)
