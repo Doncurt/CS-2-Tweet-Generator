@@ -3,6 +3,8 @@ import stochsample
 from random import randint
 
 class Markov():
+    def __init__(self):
+        pass
 
     def dictogram_markov(self,text_string):
 
@@ -36,13 +38,14 @@ class Markov():
         #
         for position in range(10):
             word= dictogram[output[position]]
-            next_word = markov_sample(word)
+            next_word = self.markov_sample(word)
             output.append(next_word)
 
         return ' '.join(output)
 
     def nth_order_markov_dictograms(self, text_string, nth_order):
-        data = text_string.split()
+        '''data = text_string.split()'''
+        data = text_string
         dictogram = {}
 
         for position in range(len(data) - nth_order):
@@ -69,7 +72,7 @@ class Markov():
             # if the tuple is in the dictogram it adds it to the output
             if key_tuple in dictogram:
                 word = dictogram[key_tuple]
-                next_word = markov_sample(word)
+                next_word = self.markov_sample(word)
                 output.append(next_word)
                 #if it isnt, jsut top the entore function from running at this point
             else:

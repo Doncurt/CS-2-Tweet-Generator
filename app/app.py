@@ -1,7 +1,15 @@
 import os
+
 from flask import Flask, render_template, request, redirect, url_for
-from .markovChain import nth_order_markov_dictograms,nth_order_markov
-from stripText import Cleaner
+import sys
+sys.path.append('/Users/donovanadams/desktop/GitHub/CS-2-Tweet-Generator/app/source')
+sys.path.append('/Users/donovanadams/desktop/GitHub/CS-2-Tweet-Generator/app/')
+from markovChain import Markov
+from stripText import Clean
+
+file_name = "histogram.txt"
+data = Clean().clean_text(file_name)
+
 app = Flask(__name__)
 
 app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY', 'this_should_be_configured')
@@ -14,35 +22,18 @@ app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY', 'this_should_be_configur
 @app.route('/')
 def home():
     """Render website's home page."""
-    return render_template('home.html')
+    tweet_markov = Markov().nth_order_markov_dictograms(data, 8)
+    tweet_it = Markov().nth_order_markov(tweet_markov)
+    return render_template('home.html', tweet = tweet_it )
 
 
 @app.route('/about/')
 def about():
     """Render the website's about page."""
-    return render_template('about.html')
+    tweet_markov = Markov().nth_order_markov_dictograms(data, 8)
+    tweet_it = Markov().nth_order_markov(tweet_markov)
+    return render_template('about.html', tweet = tweet_it)
 
-
-###
-# The functions below should be applicable to all Flask apps.
-###
-
-@app.route('/<file_name>.txt')
-def send_text_file(file_name):
-    """Send your static text file."""
-    file_dot_text = file_name + '.txt'
-    return app.send_static_file(file_dot_text)
-
-
-@app.after_request
-def add_header(response):
-    """
-    Add headers to both force latest IE rendering engine or Chrome Frame,
-    and also to cache the rendered page for 10 minutes.
-    """
-    response.headers['X-UA-Compatible'] = 'IE=Edge,chrome=1'
-    response.headers['Cache-Control'] = 'public, max-age=600'
-    return response
 
 
 @app.errorhandler(404)
@@ -53,3 +44,5 @@ def page_not_found(error):
 
 if __name__ == '__main__':
     app.run(debug=True)
+
+    
