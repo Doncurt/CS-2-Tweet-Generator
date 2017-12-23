@@ -1,5 +1,6 @@
-from dictogram import Dictogram
+#!/usr/bin/python
 import stochsample
+from dictogram import Dictogram
 from random import randint
 
 class Markov():

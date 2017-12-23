@@ -1,11 +1,13 @@
+#!/usr/bin/python
 import os
 
 from flask import Flask, render_template, request, redirect, url_for
-import sys
-sys.path.append('/Users/donovanadams/desktop/GitHub/CS-2-Tweet-Generator/app/source')
-sys.path.append('/Users/donovanadams/desktop/GitHub/CS-2-Tweet-Generator/app/')
+
+#sys.path.append('/Users/donovanadams/desktop/GitHub/CS-2-Tweet-Generator/app/source')
+#sys.path.append('/Users/donovanadams/desktop/GitHub/CS-2-Tweet-Generator/app/')
 from markovChain import Markov
 from stripText import Clean
+
 
 file_name = "histogram.txt"
 data = Clean().clean_text(file_name)
@@ -44,5 +46,3 @@ def page_not_found(error):
 
 if __name__ == '__main__':
     app.run(debug=True)
-
-    
