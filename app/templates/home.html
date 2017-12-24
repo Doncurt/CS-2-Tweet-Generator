@@ -89,6 +89,15 @@ body{
     .jumbotron img{
       height:100%
     }
+    .tweet{
+      margin-top: 15px;
+    }
+    .btn-primary{
+      background-color: #000;
+    }
+    .tweet-feed{
+      text-align: center;
+    }
 @media only screen and (max-width: 500px) {
   .box p{
     width:90%
@@ -115,6 +124,8 @@ body{
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav navbar-right">
+        <li class="tweet"><form action="/tweet" method="post"><input type="hidden" name="tweet" value="{{tweet}}"><button class=" btn-primary" type="submit">Tweet Again!</button>
+        </form></li>
         <li><a href="/about">About</a></li>
         <li><a href="http://djkimadams.me/" target="_blank">Portfolio</a></li>
         <li><a href="https://www.linkedin.com/in/donovan-adams-079238b9/" target="_blank">LinkedIn</a></li>
@@ -129,9 +140,15 @@ body{
       <p>
         {{tweet}}
       </p>
-
       </div>
     </div>
+
+</div>
+    <div class="container-fluid tweet-feed">
+    <a class="twitter-timeline"
+      href="https://twitter.com/olaf_stapeldon">
+      Tweets By Olaf
+    </a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 </div>
 
 <!--Footer section-->

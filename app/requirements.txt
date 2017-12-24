@@ -2,3 +2,4 @@ flask
 mock
 gevent
 gunicorn
+python-dotenv

@@ -7,7 +7,7 @@ from flask import Flask, render_template, request, redirect, url_for
 #sys.path.append('/Users/donovanadams/desktop/GitHub/CS-2-Tweet-Generator/app/')
 from markovChain import Markov
 from stripText import Clean
-
+import twitter
 
 file_name = "histogram.txt"
 data = Clean().clean_text(file_name)
@@ -36,7 +36,11 @@ def about():
     tweet_it = Markov().nth_order_markov(tweet_markov)
     return render_template('about.html', tweet = tweet_it)
 
-
+@app.route('/tweet', methods=['POST'])
+def tweet():
+    status = request.form['tweet']
+    twitter.tweet(status)
+    return redirect('/')
 
 @app.errorhandler(404)
 def page_not_found(error):
